@@ -7,6 +7,11 @@ MIN_BET = 10
 SLOT_ROWS = 3
 SLOT_COLS = 3
 
+symbols = [ 'A' , 'B' , 'C' , 'D' , 'E' ]
+
+slot_machine = [[0,0,0]
+                [0,0,0]
+                [0,0,0]]
 
 
 def deposit():
