@@ -54,6 +54,22 @@ def get_bet():
             print("enter a number")
     return amount
 
+def calc_result(s_m):
+    valid_lines = 0
+    val =s_m[0]
+    
+    for row in s_m:
+        for i in row:
+            if i != val:
+                break
+            else:
+                if i == row[-1]:
+                    valid_lines += 1
+                continue
+            
+    return valid_lines
+        
+
 def main():
     wallet = deposit()
     lines = no_of_lines_input()
@@ -67,10 +83,15 @@ def main():
 
     print(f"Balance : {wallet} Lines : {lines} " )
     
+    print()
     slot_machine = run_slot_machine()
     print("Slot Machine Result:")
-    for i in slot_machine:
-        print(i)
+    for row in slot_machine:
+        for col in range(MAX_LINES):
+            print(f"| {row[col]} |",end = '')
+        print()
+        
+    result = calc_result(slot_machine)
     
     
 if __name__ == "__main__":
