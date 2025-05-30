@@ -1,16 +1,15 @@
 import random
 
-MAX_LINES = 3
-MAX_BET = 100
+MAX_LINES = 7
+MAX_BET = 100000
 MIN_BET = 10
 
-ROWS = 3
-COLS = 3
+
 
 def run_slot_machine():
     #generate slot machine
     symbols = [ 'A' , 'B' , 'C' , 'D' , 'E' ]
-    slot_machine = [[random.choice(symbols) for _ in range(ROWS)] for _ in range(COLS)]
+    slot_machine = [[random.choice(symbols) for _ in range(MAX_LINES)] for _ in range(MAX_LINES)]
     return slot_machine
 
 def deposit():
@@ -68,14 +67,14 @@ def calc_result(s_m):
                     valid_lines += 1
     
     #Vertical_check
-    for row in range(3):
+    for row in range(MAX_LINES):
         last_row = s_m[-1]
         first_row = s_m[0]
         val = first_row[row]
-        for col in range(3):
+        for col in range(MAX_LINES):
             if s_m[col][row] != val:
                 break
-            elif val == s_m[col][row] and col == 2:
+            elif val == s_m[col][row] and col == MAX_LINES - 1:
                 valid_lines += 1
                     
                     
@@ -95,6 +94,7 @@ def main():
             print(f"Betting ${bet} on {lines} lines. Total bet is ${total_bet}")
         else:
             print(f"Not enough Balance Your balance is {wallet}")
+            break
 
         wallet = wallet - total_bet
         print(f"Balance : {wallet} || Lines : {lines} || Total Bet : {total_bet}")
@@ -110,16 +110,19 @@ def main():
         result = calc_result(slot_machine)
         print(f"You won {result} lines")
         
-        wallet = wallet + result * bet
+        wallet = wallet + result * bet * 2
         print(f"Updated Balance is {wallet}")
         
         proceed = input("Do you want to continue Y/n (Default value is 'n'):")
-        if proceed == "y" or "Y":
+        if proceed.lower() == "y":
             print(proceed)
             continue
         else:
+            print("Exiting...")
             break
-        
+    
+    if wallet < 1:
+        print("Low Balance")    
     
 if __name__ == "__main__":
     main()
