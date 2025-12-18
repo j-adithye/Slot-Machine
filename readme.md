@@ -1,7 +1,22 @@
-Making a text based Slot Machine 
+# Text-Based Slot Machine 🎰
 
-No Gui is used. Completly running in terminal
+A simple slot machine game built in Python that runs entirely in the terminal.
+This project was created for learning and practice purposes.
 
-main.py has the base code 
+## Features
 
-test.py is used for testing code
+* Runs in the command line (no GUI)
+* Random slot outcomes
+* Simple game logic
+
+## How to Run
+
+```bash
+python slot_machine.py
+```
+
+## Note
+
+This project was made by following a tutorial and modifying it for practice.
+
+---
